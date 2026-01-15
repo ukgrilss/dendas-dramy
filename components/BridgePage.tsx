@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Play, Heart, Sparkles, Tv, Star } from 'lucide-react';
+import { Play, ShieldCheck, Zap, Lock, Unlock } from 'lucide-react';
 
 const BridgePage: React.FC = () => {
   // Animation variants for staggered entrance
@@ -31,9 +31,9 @@ const BridgePage: React.FC = () => {
   const floatingVariant = {
     animate: {
       y: [0, -10, 0],
-      rotate: [0, 2, 0],
+      rotate: [0, 1, 0],
       transition: {
-        duration: 3,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut",
       },
@@ -42,11 +42,11 @@ const BridgePage: React.FC = () => {
 
   const pulseVariant = {
     animate: {
-      scale: [1, 1.05, 1],
+      scale: [1, 1.03, 1],
       boxShadow: [
-        "0 0 0 0 rgba(236, 72, 153, 0.7)",
-        "0 0 0 10px rgba(236, 72, 153, 0)",
-        "0 0 0 0 rgba(236, 72, 153, 0)",
+        "0 0 0 0 rgba(168, 85, 247, 0.7)",
+        "0 0 0 10px rgba(168, 85, 247, 0)",
+        "0 0 0 0 rgba(168, 85, 247, 0)",
       ],
       transition: {
         duration: 1.5,
@@ -56,78 +56,85 @@ const BridgePage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#2D0F35] via-[#4C1D95] to-[#831843] text-white overflow-hidden relative selection:bg-pink-500 selection:text-white">
-      {/* Background Decorative Elements */}
+    <div className="min-h-screen bg-slate-950 text-white overflow-hidden relative selection:bg-purple-500 selection:text-white font-sans">
+      {/* Abstract Background - Darker and more "Tech/Secure" */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-pink-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob"></div>
-        <div className="absolute top-[-10%] right-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob animation-delay-4000"></div>
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-900/40 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-900/40 rounded-full mix-blend-screen filter blur-[100px] opacity-30 animate-blob animation-delay-2000"></div>
       </div>
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 py-8 max-w-lg mx-auto text-center"
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 py-12 max-w-md mx-auto text-center"
       >
-        {/* Header/Badge */}
-        <motion.div variants={itemVariants} className="mb-6">
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-semibold text-pink-200 shadow-lg">
-            <Sparkles size={14} className="text-yellow-300" />
-            Acesso Exclusivo Liberado
+        {/* Header/Badge - Verified Status */}
+        <motion.div variants={itemVariants} className="mb-8">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 text-sm font-semibold text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <ShieldCheck size={16} />
+            Conexão Segura Estabelecida
           </span>
         </motion.div>
 
-        {/* Main Title */}
-        <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl font-extrabold mb-2 tracking-tight leading-tight">
-          O Mundo dos <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-300 drop-shadow-sm">
-            Doramas Premium
+        {/* Main Title - Generic Access */}
+        <motion.h1 variants={itemVariants} className="text-5xl font-extrabold mb-4 tracking-tight leading-tight">
+          Acesso <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+            Liberado
           </span>
         </motion.h1>
 
-        <motion.p variants={itemVariants} className="text-gray-200 text-lg mb-8 font-medium">
-          Assista às melhores histórias de amor e drama com qualidade incrível.
+        <motion.p variants={itemVariants} className="text-slate-400 text-lg mb-10 leading-relaxed">
+          Seu conteúdo exclusivo já está disponível. Clique abaixo para iniciar.
         </motion.p>
 
-        {/* Dynamic Image Container */}
+        {/* Dynamic Abstract Card (No specific images) */}
         <motion.div 
           variants={itemVariants}
-          className="relative w-full aspect-video mb-8 group"
+          className="relative w-full aspect-[16/9] mb-10 group"
         >
           <motion.div 
             variants={floatingVariant}
             animate="animate"
-            className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10"
+            className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-slate-700 bg-slate-900"
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
-            
+            {/* Generic Tech/Cinema Background Image */}
             <img 
               src="https://i.postimg.cc/c1p08ffW/image.png" 
-              alt="Dorama Preview" 
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+              alt="Preview Content"
+              className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
             />
             
-            {/* Overlay Icon */}
+            {/* Gradient Overlay for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10" />
+
+            {/* Central Play/Unlock Icon */}
             <div className="absolute inset-0 flex items-center justify-center z-20">
-              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-xl">
-                 <Play fill="white" className="text-white ml-1" size={32} />
+              <div className="relative group-hover:scale-110 transition-transform duration-500">
+                <div className="absolute inset-0 bg-purple-500 blur-xl opacity-20 rounded-full"></div>
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center border border-white/10 shadow-lg relative z-10">
+                   <Play fill="white" className="text-white ml-1" size={32} />
+                </div>
               </div>
             </div>
 
-            {/* Floating Tags */}
-            <div className="absolute bottom-3 left-3 z-20 flex gap-2">
-               <span className="bg-black/60 backdrop-blur-md text-xs px-2 py-1 rounded-md flex items-center gap-1">
-                 <Tv size={10} /> HD 4K
+            {/* Tech Tags */}
+            <div className="absolute bottom-4 left-4 z-20 flex gap-2">
+               <span className="bg-slate-900/80 backdrop-blur-md border border-slate-700 text-[10px] uppercase tracking-wider px-2 py-1 rounded text-slate-300 flex items-center gap-1">
+                 <Zap size={10} className="text-yellow-400" /> Premium
                </span>
-               <span className="bg-pink-600/80 backdrop-blur-md text-xs px-2 py-1 rounded-md flex items-center gap-1">
-                 <Heart size={10} fill="currentColor" /> Romance
+               <span className="bg-slate-900/80 backdrop-blur-md border border-slate-700 text-[10px] uppercase tracking-wider px-2 py-1 rounded text-slate-300 flex items-center gap-1">
+                 <Lock size={10} className="text-emerald-400" /> Verificado
                </span>
             </div>
+            
+            {/* Progress Bar Visual */}
+            <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-purple-500 to-blue-500 w-full opacity-80 z-20"></div>
           </motion.div>
 
-          {/* Glow effect behind image */}
-          <div className="absolute inset-0 bg-pink-500 blur-3xl opacity-20 -z-10 rounded-full transform translate-y-4" />
+          {/* Glow effect behind */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-purple-500/10 blur-3xl rounded-full -z-10" />
         </motion.div>
 
         {/* CTA Button */}
@@ -138,13 +145,13 @@ const BridgePage: React.FC = () => {
             animate="animate"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="relative w-full block group overflow-hidden rounded-xl bg-gradient-to-r from-pink-500 via-fuchsia-600 to-purple-600 p-[2px] shadow-2xl shadow-pink-500/30"
+            className="relative w-full block group overflow-hidden rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 p-[1px] shadow-lg shadow-purple-500/20"
           >
-            <div className="relative flex items-center justify-center gap-3 px-8 py-5 bg-transparent rounded-xl h-full transition-colors group-hover:bg-white/5">
-              <span className="text-2xl font-bold uppercase tracking-wider text-white">
-                10 Minutos Grátis
+            <div className="relative flex items-center justify-center gap-3 px-6 py-4 bg-slate-900/40 backdrop-blur-sm rounded-xl h-full transition-all group-hover:bg-white/5">
+              <span className="text-xl font-bold uppercase tracking-widest text-white">
+                Acessar Agora
               </span>
-              <Play fill="currentColor" className="text-white animate-pulse" size={24} />
+              <Unlock className="text-white/80" size={20} />
             </div>
             
             {/* Shine effect */}
@@ -152,31 +159,23 @@ const BridgePage: React.FC = () => {
           </motion.a>
         </motion.div>
 
-        {/* Trust Indicators / Social Proof (Optional add-on for better conversion) */}
-        <motion.div variants={itemVariants} className="mt-8 flex flex-col items-center gap-2">
-          <div className="flex -space-x-2">
-            {[1, 2, 3, 4].map((i) => (
-              <img 
-                key={i}
-                className="w-8 h-8 rounded-full border-2 border-purple-900 object-cover" 
-                src={`https://picsum.photos/seed/${100+i}/50/50`} 
-                alt="User" 
-              />
+        {/* Generic Social Proof */}
+        <motion.div variants={itemVariants} className="mt-8 flex items-center justify-center gap-3 opacity-60">
+           <div className="flex -space-x-2">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="w-6 h-6 rounded-full bg-slate-700 border border-slate-900 flex items-center justify-center overflow-hidden">
+                <div className={`w-full h-full bg-gradient-to-br ${i===1 ? 'from-blue-400 to-blue-600' : i===2 ? 'from-purple-400 to-purple-600' : 'from-emerald-400 to-emerald-600'}`}></div>
+              </div>
             ))}
-            <div className="w-8 h-8 rounded-full border-2 border-purple-900 bg-white text-purple-900 flex items-center justify-center text-xs font-bold">
-              +1k
-            </div>
-          </div>
-          <div className="flex items-center gap-1 text-sm text-purple-200">
-            <div className="flex text-yellow-400">
-              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={12} fill="currentColor" />)}
-            </div>
-            <span>Amado por dorameiras</span>
-          </div>
+           </div>
+           <p className="text-xs text-slate-400 font-medium flex items-center gap-1">
+             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+             +1.2k usuários ativos agora
+           </p>
         </motion.div>
 
-        <motion.footer variants={itemVariants} className="mt-12 text-xs text-purple-300/60">
-          © {new Date().getFullYear()} Dramy App. Todos os direitos reservados.
+        <motion.footer variants={itemVariants} className="mt-16 text-[10px] text-slate-600 uppercase tracking-widest">
+          Copyright © {new Date().getFullYear()} • Todos os direitos reservados
         </motion.footer>
 
       </motion.div>
